@@ -5,7 +5,6 @@
 # then print the reference ET and the ETk
 
 library(shiny)
-library(showtext)
 
 shinyUI(fluidPage(
   
@@ -85,7 +84,7 @@ ET",
                     その値が公式 52 で使用する \\(R_{a}\\) の値となります。 
                     以下のページのコードを参照',
                     a("GitHub.",
-                      href = "https://github.com/micahwoods/ETo"),
+                      href = "https://github.com/micahwoods/ETo_jp"),
                     sep = "")))
     )
   )
