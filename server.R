@@ -1,4 +1,3 @@
-
 # This is the server logic for a Shiny web application.
 # You can find out more about building applications with Shiny here:
 #
@@ -9,7 +8,7 @@ library("shiny")
 library("lubridate")
 
 shinyServer(function(input, output) {
-
+  
   output$text1 <- renderText({
     
     avgTemp <- (input$high + input$low) / 2
@@ -28,7 +27,7 @@ shinyServer(function(input, output) {
     solar.declination <- 0.409 * sin((((2 * pi) / 365) * day.of.year) - 1.39)
     latitudeRadians <- (pi/180) * input$latitude 
     sunset.hour.angle <- acos(-tan(latitudeRadians) * tan(solar.declination))
-   
+    
     # Ra, extraterrestrial irradiance
     Ra <- ((k1 * solar.constant) * inverse.distance) *
       (sunset.hour.angle * sin(latitudeRadians) * sin(solar.declination) +
@@ -42,22 +41,22 @@ shinyServer(function(input, output) {
     
     ETc <- ETo * input$kC
     
-    paste("基準 ET の日",
+    paste("年月日； ",
           input$date, 
-          " その日の最高気温 ",
+          "、最高気温； ",
           input$high,
-          "°C, 最低気温 ",
+          "°C、 最低気温； ",
           input$low,
-          "°C, その場所の緯度 ",
+          "°C、 緯度； ",
           input$latitude,
-          "° を入力 ",
+          "° の基準 ET は ",
           formatC(ETo, digits = 2), 
-          " mm. 作物係数が ",
+          " mm です。作物係数が ",
           input$kC,
-          " その植物のET は ",
+          " の植物のET は ",
           formatC(ETc, digits = 2),
-          " mm.", sep = "")
-
+          " mm です。", sep = "")
+    
   })
-
+  
 })
