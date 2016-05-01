@@ -36,7 +36,7 @@ shinyUI(fluidPage(
     
     
     
-    dateInput("date", "年月日:"),
+    dateInput("date", "年月日:", language = "ja"),
     
     
     numericInput("latitude",
